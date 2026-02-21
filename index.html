@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang = en>
+    
+    <head>
+
+        <title>HOME | Book A Barber 916</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Home page for Book A Barber 916 in Sacramento, CA.">
+        <link rel="stylesheet" href="./css/style.css">
+
+    </head>
+
+    <body>
+        <div class="header">
+            <h1 class="logo"><img src="./img/A0C54B8B-8711-47D0-AE98-E419C384090F.PNG" alt="Book A Barber 916"></h1>
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="10" class="marquee">Welcome to Book A Barber 916! We are a local barbershop in Sacramento, CA. We offer haircuts, shaves, and beard trims. Book an appointment with Macc the Barber today! 279-248-9204</marquee>
+    
+        <section class="hero">
+
+            <div class="slideshow-container">
+                <!-- Images will be inserted by JS -->
+            </div>
+
+            <div class="hero-overlay">
+                <h2>Macc The Barber</h2>
+                <a href="/book.html" class="hero-btn">BOOK TODAY</a>
+            </div>
+
+        </section>
+
+        <section class="map-section">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.4679484212115!2d-121.42196462420468!3d38.592098371790804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ada3e8e88cb67%3A0x7f73462790496ac8!2s1440%20Ethan%20Wy%20Suite%201%2C%20Sacramento%2C%20CA%2095825!5e0!3m2!1sen!2sus!4v1771304887036!5m2!1sen!2sus"
+                    height="450"
+                    width="600"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </section>
+
+        <script>
+            const images = [
+                "./img/IMG_3905.jpg",
+                "./img/IMG_3906.jpg",
+                "./img/IMG_3907.jpg",
+                "./img/IMG_3908.jpg",
+                //"./img/IMG_3909.jpg",
+                "./img/IMG_3910.jpg",
+                "./img/IMG_3911.jpg",
+                "./img/IMG_4359.jpg",
+                "./img/IMG_5543.jpg"
+            ];
+
+            // Shuffle array
+            function shuffle(array) {
+                return array.sort(() => 0.5 - Math.random());
+            }
+
+            const selectedImages = shuffle(images).slice(0, 8); // Select 8 random images
+
+            const container = document.querySelector(".slideshow-container");
+
+            selectedImages.forEach((src, index) => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.classList.add("slide");
+
+                // Adjust focal point for certain images that are miscentered
+                if (src.includes("3905")) img.style.objectPosition = "center 10%";
+                if (src.includes("3906")) img.style.objectPosition = "center 20%";
+                if (src.includes("3907")) img.style.objectPosition = "center 8%";
+                //if (src.includes("3908")) img.style.objectPosition = "center 50%";
+                //if (src.includes("3909")) img.style.objectPosition = "center 70%";
+                //if (src.includes("3910")) img.style.objectPosition = "center 20%";
+                if (src.includes("3911")) img.style.objectPosition = "center 20%";
+                //if (src.includes("4359")) img.style.objectPosition = "center 40%";
+                if (src.includes("5543")) img.style.objectPosition = "center 45%";
+                
+                if(index === 0) img.classList.add("active");
+                container.appendChild(img);
+            });
+
+            let current = 0;
+            const slides = document.querySelectorAll(".slide");
+
+            setInterval(() => {
+                slides[current].classList.remove("active");
+                current = (current + 1) % slides.length;
+                slides[current].classList.add("active");
+            }, 4000);
+        </script>
+
+    </body>
+</html>
